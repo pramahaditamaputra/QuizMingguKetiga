@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 const FormTextArea = (props) => {
   const [questionName, setQuestionName] = useState("");
@@ -54,9 +54,13 @@ const FormTextArea = (props) => {
             onChange={(e) => setScore(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Row>
+          <Col lg={12} className="d-flex justify-content-center">
+            <Button className="btn btn-sm" variant="primary" type="submit">
+              Submit New Question
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </div>
   );
