@@ -25,6 +25,7 @@ const FormRadio = (props) => {
     const newQuestion = props.questions;
     newQuestion.push(question);
     props.setQuestions(newQuestion);
+    props.setButtonType(Math.random());
     console.log(props.questions);
   };
 

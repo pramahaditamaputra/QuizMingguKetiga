@@ -9,6 +9,7 @@ import QuestionsCheckBox from "./components/QuestionsCheckBox";
 import QuestionsTextArea from "./components/QuestionsTextArea";
 
 const Home = () => {
+  const [buttonType, setButtonType] = useState(0);
   const [formType, setFormType] = useState("radio");
   const [questions, setQuestions] = useState([]);
 
@@ -74,6 +75,8 @@ const Home = () => {
                 formType={formType}
                 questions={questions}
                 setQuestions={setQuestions}
+                buttonType={buttonType}
+                setButtonType={setButtonType}
               />
             )}
             {formType === "checkbox" && (
@@ -81,6 +84,8 @@ const Home = () => {
                 formType={formType}
                 questions={questions}
                 setQuestions={setQuestions}
+                buttonType={buttonType}
+                setButtonType={setButtonType}
               />
             )}
             {formType === "textarea" && (
@@ -88,6 +93,8 @@ const Home = () => {
                 formType={formType}
                 questions={questions}
                 setQuestions={setQuestions}
+                buttonType={buttonType}
+                setButtonType={setButtonType}
               />
             )}
           </div>
