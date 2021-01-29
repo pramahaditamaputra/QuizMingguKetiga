@@ -10,10 +10,26 @@ const QuestionsRadio = (props) => {
           </Form.Label>
         </Form.Group>
         <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="radio" label={props.question.a} />
-          <Form.Check type="radio" label={props.question.b} />
-          <Form.Check type="radio" label={props.question.c} />
-          <Form.Check type="radio" label={props.question.d} />
+          <Form.Check
+            type="radio"
+            name={props.question.questionName}
+            label={props.question.a}
+          />
+          <Form.Check
+            type="radio"
+            name={props.question.questionName}
+            label={props.question.b}
+          />
+          <Form.Check
+            type="radio"
+            name={props.question.questionName}
+            label={props.question.c}
+          />
+          <Form.Check
+            type="radio"
+            name={props.question.questionName}
+            label={props.question.d}
+          />
         </Form.Group>
       </Form>
     </div>
