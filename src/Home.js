@@ -24,11 +24,11 @@ const Home = () => {
   };
 
   //GetQuestionSelectedIndex
-  let selectedQuestion = "";
+  let [selectedQuestion, setSelectedQuestion] = useState(null);
 
   //GetFormBasedOnQuestionTypeAndChangeFormModeToEdit
   const handleEdit = (e) => {
-    selectedQuestion = e.target.value;
+    setSelectedQuestion(e.target.value);
     let objQuestions = [...questions];
     let objQuestion = {
       ...objQuestions[e.target.value],
@@ -36,15 +36,6 @@ const Home = () => {
     console.log(objQuestion);
     setFormMode(1);
     setFormType(objQuestion.questionType);
-  };
-
-  //AddQuestion
-  const addQuestion = (question) => {
-    //CloneCurrentStateValue
-    let newQuestion = [...questions, question];
-    //SetNewValueToState
-    setFormMode(0);
-    setQuestions(newQuestion);
   };
 
   //EditQuestionAndChangeFormModeToAddQuestion
@@ -61,6 +52,16 @@ const Home = () => {
     //SetNewValueToState
     setFormMode(0);
     setQuestions(objQuestions);
+    console.log("A");
+  };
+
+  //AddQuestion
+  const addQuestion = (question) => {
+    //CloneCurrentStateValue
+    let newQuestion = [...questions, question];
+    //SetNewValueToState
+    setFormMode(0);
+    setQuestions(newQuestion);
   };
 
   //ChangeFormModeFromEditToAdd
