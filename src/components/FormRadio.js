@@ -22,16 +22,27 @@ const FormRadio = (props) => {
       score,
       keyAnswer,
     };
-    const newQuestion = props.questions;
-    newQuestion.push(question);
-    props.setQuestions(newQuestion);
-    props.setButtonType(Math.random());
-    console.log(props.questions);
+    // const newQuestion = props.questions;
+    // newQuestion.push(question);
+    // props.setQuestions(newQuestion);
+    // props.setButtonType(Math.random());
+    // console.log(props.questions);
+
+    if (props.formMode === 0) {
+      props.addQuestion(question);
+    } else if (props.formMode === 1) {
+      console.log(e.target.value);
+      if (e.target.value === "edit") {
+        props.editQuestion(question);
+      } else if (e.target.value === "cancel") {
+        props.handleCancel();
+      }
+    }
   };
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <Form.Group controlId="formBasicText">
           <Form.Label>Question</Form.Label>
           <Form.Control
@@ -104,9 +115,37 @@ const FormRadio = (props) => {
         </Form.Group>
         <Row>
           <Col lg={12} className="d-flex justify-content-center">
-            <Button className="btn btn-sm" variant="primary" type="submit">
-              Submit New Question
-            </Button>
+            {props.formMode === 0 ? (
+              <Button
+                className="btn btn-sm"
+                variant="primary"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Submit New Question
+              </Button>
+            ) : (
+              <>
+                <Button
+                  className="btn btn-sm mr-3"
+                  variant="success"
+                  type="submit"
+                  value="edit"
+                  onClick={handleSubmit}
+                >
+                  Submit Edit Question
+                </Button>
+                <Button
+                  className="btn btn-sm"
+                  variant="danger"
+                  type="submit"
+                  value="cancel"
+                  onClick={handleSubmit}
+                >
+                  Cancel
+                </Button>
+              </>
+            )}
           </Col>
         </Row>
       </Form>
