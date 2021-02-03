@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import FormCheckBox from "./components/FormCheckBox";
 import FormRadio from "./components/FormRadio";
@@ -33,7 +33,6 @@ const Home = () => {
     let objQuestion = {
       ...objQuestions[e.target.value],
     };
-    console.log(objQuestion);
     setFormMode(1);
     setFormType(objQuestion.questionType);
   };
@@ -52,7 +51,7 @@ const Home = () => {
     //SetNewValueToState
     setFormMode(0);
     setQuestions(objQuestions);
-    console.log("A");
+    return true;
   };
 
   //AddQuestion
@@ -62,12 +61,14 @@ const Home = () => {
     //SetNewValueToState
     setFormMode(0);
     setQuestions(newQuestion);
+    return true;
   };
 
   //ChangeFormModeFromEditToAdd
   const handleCancel = () => {
     //ChangeFormModeToAdd
     setFormMode(0);
+    return true;
   };
 
   return (
@@ -216,6 +217,7 @@ const Home = () => {
                 editQuestion={editQuestion}
                 formMode={formMode}
                 handleCancel={handleCancel}
+                handleEdit={handleEdit}
               />
             )}
           </div>

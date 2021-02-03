@@ -10,8 +10,19 @@ const FormCheckBox = (props) => {
   const [keyAnswer, setKeyAnswer] = useState([]);
   const [score, setScore] = useState("");
 
+  const resetAllFields = () => {
+    setQuestionName("");
+    setA("");
+    setB("");
+    setC("");
+    setD("");
+    setKeyAnswer("");
+    setScore("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    let formattedKeyAnswer = keyAnswer.split(",");
     const question = {
       questionType: `${props.formType}`,
       questionName,
@@ -20,22 +31,22 @@ const FormCheckBox = (props) => {
       c,
       d,
       score,
-      keyAnswer,
+      keyAnswer: [formattedKeyAnswer],
     };
-    // const newQuestion = props.questions;
-    // newQuestion.push(question);
-    // props.setQuestions(newQuestion);
-    // props.setButtonType(Math.random());
-    // console.log(props.questions);
 
     if (props.formMode === 0) {
-      props.addQuestion(question);
+      if (props.addQuestion(question)) {
+        resetAllFields();
+      }
     } else if (props.formMode === 1) {
-      console.log(e.target.value);
       if (e.target.value === "edit") {
-        props.editQuestion(question);
+        if (props.editQuestion(question)) {
+          resetAllFields();
+        }
       } else if (e.target.value === "cancel") {
-        props.handleCancel();
+        if (props.handleCancel()) {
+          resetAllFields();
+        }
       }
     }
   };
